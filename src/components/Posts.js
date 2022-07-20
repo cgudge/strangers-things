@@ -30,6 +30,8 @@ const Posts = () => {
 							<h3>{post.price}</h3>
 						</div>
 					);
+				} else {
+					return null;
 				}
 			})}
 		</div>
