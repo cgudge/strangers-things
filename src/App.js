@@ -1,13 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login';
-import {
-	BrowserRouter as Router,
-	Routes,
-	Route,
-	Link,
-	useNavigate,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useState } from 'react';
 import Posts from './components/Posts';
 import Home from './components/Home';
@@ -58,6 +51,7 @@ function App() {
 							path='/profile'
 							element={
 								<Profile
+									isLoggedIn={isLoggedIn}
 									token={token}
 									user={user}
 									setUser={setUser}

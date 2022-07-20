@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { login } from './api';
 
 const API_URL =
 	'https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT-B';
