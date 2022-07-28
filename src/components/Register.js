@@ -5,17 +5,20 @@ import { useNavigate } from 'react-router-dom';
 const API_URL =
 	'https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT-B';
 
-function Login(props) {
-	localStorage.removeItem('token');
-	let user = { username: '', password: '' };
+const Register = (props) => {
+	let navigate = useNavigate();
 	let setToken = props.setToken;
 	let setIsLoggedIn = props.setIsLoggedIn;
-	const navigate = useNavigate();
+
+	let user = { username: '', password: '' };
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
 		try {
-			const resp = await axios.post(`${API_URL}/users/login`, { user });
+			const resp = await axios.post(`${API_URL}/users/register`, {
+				user,
+			});
+			console.log(resp);
 			const accessToken = resp?.data?.data?.token;
 			setToken(accessToken);
 			localStorage.setItem('token', accessToken);
@@ -25,10 +28,11 @@ function Login(props) {
 			console.log(error);
 		}
 	};
+
 	return (
 		<>
 			<h1>Welcome to Stranger's Things</h1>
-			<h2>Please login to continue</h2>
+			<h2>Create account to continue</h2>
 			<div className='inputs'>
 				<div className='form'>
 					<form onSubmit={submitHandler}>
@@ -58,13 +62,10 @@ function Login(props) {
 					<span className='input-border'></span>
 
 					<span className='input-border'></span>
-					<h3>
-						<a href='/register'>Need to create an account?</a>
-					</h3>
 				</div>
 			</div>
 		</>
 	);
-}
+};
 
-export default Login;
+export default Register;

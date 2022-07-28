@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Posts from './components/Posts';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import Register from './components/Register';
 
 function App() {
 	const [user, setUser] = useState({ name: '', password: '' });
@@ -58,6 +59,15 @@ function App() {
 								/>
 							}
 						/>
+						<Route
+							path='/register'
+							element={
+								<Register
+									setToken={setToken}
+									setIsLoggedIn={setIsLoggedIn}
+								/>
+							}
+						></Route>
 					</Routes>
 				</div>
 			</Router>
