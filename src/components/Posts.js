@@ -10,7 +10,6 @@ const Posts = () => {
 		try {
 			const { data } = await axios.get(`${URL}`);
 			setPosts(data?.data?.posts);
-			console.log(data?.data?.posts);
 		} catch (error) {
 			throw error;
 		}
@@ -22,7 +21,28 @@ const Posts = () => {
 
 	return (
 		<div className='post-section'>
-			{posts.map((post) => {
+			<table>
+				<tbody>
+					<tr>
+						<th>Title</th>
+						<th>Price</th>
+					</tr>
+					{posts.map((post) => {
+						if (post.active) {
+							return (
+								<tr>
+									<td>{post.title}</td>
+									<td>{post.price}</td>
+								</tr>
+							);
+						} else {
+							return null;
+						}
+					})}
+				</tbody>
+			</table>
+
+			{/* {posts.map((post) => {
 				if (post.active) {
 					return (
 						<div className='post' key={post._id}>
@@ -33,7 +53,7 @@ const Posts = () => {
 				} else {
 					return null;
 				}
-			})}
+			})} */}
 		</div>
 	);
 };

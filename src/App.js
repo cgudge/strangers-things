@@ -6,6 +6,7 @@ import Posts from './components/Posts';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Register from './components/Register';
+import CreatePost from './components/CreatePost';
 
 function App() {
 	const [user, setUser] = useState({ name: '', password: '' });
@@ -67,6 +68,10 @@ function App() {
 									setIsLoggedIn={setIsLoggedIn}
 								/>
 							}
+						></Route>
+						<Route
+							path='/createpost'
+							element={<CreatePost />}
 						></Route>
 					</Routes>
 				</div>
